@@ -147,8 +147,6 @@ ul, #myULleft, #myULright {
 }
 
 .content-page {
-  margin-left: 250px;
-  margin-right: 250px;
   overflow: hidden;
   padding:5px 5px;
   min-height: 80vh;

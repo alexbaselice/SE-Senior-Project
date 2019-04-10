@@ -108,7 +108,7 @@
         <!-- WorkSpace page content in the middle of webpage -->
         <div class="main-content">
           <h2> Workspace </h2>
-        <div class="ui-box col-md-8 content-page">
+        <div class="ui-box content-page">
           <div class="content">
             <h2>Work Space Subcontent 1</h2>
             <div class="query-search-bar">
@@ -133,7 +133,7 @@
 
         <div class="clearfix"></div>
 
-        <div class="ui-box col-md-8 content-page">
+        <div class="ui-box content-page">
           <div class="content">
             <h2>Work Space Subcontent 2</h2>
             <div class="navbar-custom">
