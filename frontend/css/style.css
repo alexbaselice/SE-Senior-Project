@@ -1,124 +1,285 @@
-/* 3 Column grid styling - mobile responsive  */
-.col-3-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.clearfix {
+  overflow: auto;
 }
-@media (max-width: 800px) {
-    .col-3-container {
-        grid-template-columns: 1fr;
-    }
+
+body {
+  background-color: #6c757d;
 }
 
 /* Views */
 .ui-box{
-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-border-radius: 15px;
-z-index: 0;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 10px 20px rgba(0,0,0,0.19);
+  border-radius: 15px;
+  z-index: 0;
   height: calc(100vh - 40px);
-  margin: 20px;
-  padding: 20px;
-  background-color:rgb(14, 24, 39);
+  margin: 2em;
+  padding: 2em;
+  background-color: #fff;
+  box-sizing: border-box;
 }
 
-
-/* Background colors */
-body {
-background-color:rgb(11, 21, 36);
-color: rgb(255,255,255);
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif !important;
+/* ============================================================================ */
+/* The left sidebar menu */
+.left-sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 220px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-image: linear-gradient(135deg,#8f75da 0,#727cf5 60%);
+  color: #fff;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
 }
 
-
-
-/* Loading animation  */
-.loading{
-position: absolute;
-z-index: 1;
-background-color:rgb(11, 21, 36);
-transition: 0.3s ease all;
-color:  rgba(255,255,255,0.9);;
-  width:100%;
-  height: 100%;
+/* For logo in left side bar */
+.logo {
+  display: block;
+  line-height: 80px;
 }
-  
-
-.spinner {
-margin: 100px auto;
-width: 40px;
-height: 40px;
-position: relative;
+/* Aligns text to the center */
+.text-center {
+  text-align: center!important;
+}
+/* The sidebar navigation menu title*/
+.left-sidenav h2 {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  /*color: #818181;*/
 }
 
-.cube1, .cube2 {
-background-color: #00c7b7;
-width: 15px;
-height: 15px;
-position: absolute;
-top: 0;
-left: 0;
-
--webkit-animation: sk-cubemove 1.8s infinite ease-in-out;
-animation: sk-cubemove 1.8s infinite ease-in-out;
+.left-sidenav li {
+  text-decoration: none;
+  color: #cedce4;
 }
 
-.cube2 {
--webkit-animation-delay: -0.9s;
-animation-delay: -0.9s;
-background-color: #00c7b7;
-background-color: #F9425F;
+/* The navigation menu links */
+.left-sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #cedce4;
+  display: block;
 }
 
-@-webkit-keyframes sk-cubemove {
-25% { -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5) }
-50% { -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg) }
-75% { -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5) }
-100% { -webkit-transform: rotate(-360deg) }
+/* When you mouse over the navigation links, change their color */
+.left-sidenav a:hover {
+  color: #f1f1f1;
+  text-decoration: none;
 }
 
-@keyframes sk-cubemove {
-25% { 
-transform: translateX(42px) rotate(-90deg) scale(0.5);
--webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
-} 50% { 
-transform: translateX(42px) translateY(42px) rotate(-179deg);
--webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
-} 50.1% { 
-transform: translateX(42px) translateY(42px) rotate(-180deg);
--webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
-} 75% { 
-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
--webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
-} 100% { 
-transform: rotate(-360deg);
--webkit-transform: rotate(-360deg);
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .left-sidenav {padding-top: 15px;}
+  .left-sidenav a {font-size: 18px;}
 }
+
+/* File Tree Structure */
+/* Remove default bullets */
+ul, #myULleft, #myULright {
+  list-style-type: none;
+}
+
+/* Remove margins and padding from the parent ul */
+#myULleft, #myULright {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the caret/arrow */
+.caret {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+  display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+  display: block;
+  /*transition: all 0.3s ease-in-out 0s;*/
+}
+
+.left-sidenav ul li {
+  text-decoration: none;
+  /*color: #818181;*/
+}
+
+/* The navigation menu links */
+.left-sidenav ul a {
+  padding: 0px 1px 0px 2px;
+  text-decoration: none;
+  font-size: 1em;
+  /*color: #818181;*/
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.left-sidenav ul a:hover,span:hover {
+  color: #f1f1f1;
+  text-decoration: none;
+}
+
+/* ============================================================================ */
+/* Middle of the page */
+.main-content {
+  margin-left: 250px;
+  margin-right: 0px;
+  overflow: hidden;
+  padding:5px 5px;
+}
+
+.content-page {
+  margin-left: 5px;
+  margin-right: 5px;
+  overflow: hidden;
+  padding:5px 5px;
+  min-height: 80vh;
+}
+
+.navbar-custom {
+  padding: 0 30px;
+  background-color: #f1ebeb;
+  webkit-box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
+  box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
+}
+
+.query-search-bar {
+  margin: 10px 0px 10px 0px;
+}
+
+/* ============================================================================ */
+/* Session View Structure */
+/* The right sidebar */
+.right-sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 220px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  right: 0;
+  background-image: linear-gradient(135deg,#8f75da 0,#727cf5 60%);
+  color: #fff;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The sidebar navigation menu title*/
+.right-sidenav h2, h5 {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.right-sidenav h6 {
+  padding: 0px 8px 0px 16px;
+  text-decoration: none;
+  color: #cedce4;
+}
+
+.right-sidenav button {
+  margin: 6px 8px 6px 16px;
+  background-color: #26a69a;
+  color: #fff;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.right-sidenav button:hover {
+  background-color: #32cdbf;
+  color: white;
+}
+
+.right-sidenav li {
+  text-decoration: none;
+  color: #cedce4;
+}
+
+/* The navigation menu links */
+.right-sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #cedce4;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.right-sidenav a:hover {
+  color: #f1f1f1;
+  text-decoration: none;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .right-sidenav {padding-top: 15px;}
+  .right-sidenav a {font-size: 18px;}
+}
+
+.right-sidenav ul li {
+  text-decoration: none;
+  color: #cedce4;
+}
+
+/* The navigation menu links */
+.right-sidenav ul a {
+  padding: 0px 1px 0px 2px;
+  text-decoration: none;
+  font-size: 1em;
+  color: #cedce4;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.right-sidenav ul a:hover,span:hover {
+  color: #f1f1f1;
+  text-decoration: none;
 }
 
 /* Select Pop Up  */
-.select-dropdown{
-    color: #fff;
+.select-dropdown-element {
+  margin: 6px 8px 6px 16px;
 }
-.caret > path:nth-child(1){
+
+.select-dropdown-element select {
+  border-radius: 4px;
+  padding: 2px 4px 2px 8px;
+}
+
+.select-dropdown {
+  color: #fff;
+}
+
+.caret > path:nth-child(1) {
   fill: #fff;
 }
 
-/* Search */
-#search{
-  color:#fff;
+.info-box {
+  border-radius: 4px;
+  padding: 5px;
+  margin: 15px 15px 15px 15px;
+  position: relative;
+  background-color: #7e87f6;
 }
 
-/* Files */
-.folder:before{
-  content: url('data:image/svg+xml; utf8, <svg fill="rgb(38, 166, 154)" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 5h13v17h-24v-20h8l3 3zm-10-2v18h22v-15h-12.414l-3-3h-6.586z"/></svg>');
-  fill:rgb(38, 166, 154);
-}
-
-.file{
-  display:inline;
-}
-.layer-1:before {
-  content: url('data:image/svg+xml; utf8, <svg fill="rgb(38, 166, 154)" xmlns="http://www.w3.org/2000/svg" width="20px" height="14px" xmlns:xlink="http://www.w3.org/1999/xlink"  preserveAspectRatio="xMidYMid meet" ><line id="e1_line" x1="0" y1="7" x2="100" y2="7" style="stroke:rgb(38, 166, 154);fill:rgb(38, 166, 154);stroke-width:1px;"/></svg>');
-}
-.layer-2:before {
-  content: url('data:image/svg+xml; utf8, <svg fill="rgb(38, 166, 154)" xmlns="http://www.w3.org/2000/svg" width="30px" height="14px" xmlns:xlink="http://www.w3.org/1999/xlink"  preserveAspectRatio="xMidYMid meet" ><line id="e1_line" x1="10" y1="0" x2="10" y2="7" style="stroke:rgb(38, 166, 154);stroke-width:1px;"/><line id="e1_line" x1="10" y1="7" x2="30" y2="7" style="stroke:rgb(38, 166, 154);stroke-width:1px;"/></svg>');
+.info-box h6 {
+  font-size: 0.9em;
 }
