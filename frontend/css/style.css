@@ -4,6 +4,7 @@
 
 body {
   background-color: #6c757d;
+  font-family: Arial, Helvetica, san-serif;
 }
 
 /* Views */
@@ -12,6 +13,18 @@ body {
   border-radius: 15px;
   z-index: 0;
   height: calc(100vh - 40px);
+  margin: 2em;
+  padding: 2em;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.ui-box-keywords{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 10px 20px rgba(0,0,0,0.19);
+  border-radius: 15px;
+  z-index: 0;
+  /*height: calc(100vh - 40px);*/
+  height: 40px;
   margin: 2em;
   padding: 2em;
   background-color: #fff;
@@ -141,17 +154,25 @@ ul, #myULleft, #myULright {
 /* Middle of the page */
 .main-content {
   margin-left: 250px;
-  margin-right: 0px;
+  margin-right: 250px;
   overflow: hidden;
   padding:5px 5px;
 }
 
 .content-page {
-  margin-left: 5px;
-  margin-right: 5px;
   overflow: hidden;
   padding:5px 5px;
   min-height: 80vh;
+}
+
+.content-page-keywords {
+  overflow: hidden;
+  padding:5px 5px;
+  min-height: 40vh;
+}
+
+.subcontent-header {
+  padding: 10px;
 }
 
 .navbar-custom {
@@ -182,10 +203,16 @@ ul, #myULleft, #myULright {
 }
 
 /* The sidebar navigation menu title*/
-.right-sidenav h2, h5 {
+.right-sidenav h2 {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   color: #fff;
+}
+
+.right-sidenav h5 {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  color: #cedce4;
 }
 
 .right-sidenav h6 {
@@ -194,7 +221,7 @@ ul, #myULleft, #myULright {
   color: #cedce4;
 }
 
-.right-sidenav button {
+.session-button {
   margin: 6px 8px 6px 16px;
   background-color: #26a69a;
   color: #fff;
@@ -203,7 +230,7 @@ ul, #myULleft, #myULright {
   cursor: pointer;
 }
 
-.right-sidenav button:hover {
+.session-button:hover {
   background-color: #32cdbf;
   color: white;
 }
