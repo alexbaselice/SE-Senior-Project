@@ -1,13 +1,20 @@
 import scrapy
+import scrapy.exceptions
 
+keywords = 'loyalty program million'
 
-class BlogSpider(scrapy.Spider):
-    name = 'blogspider'
-    start_urls = ['https://blog.scrapinghub.com']
+class Crawler(scrapy.Spider):
+    name = 'Loyalty'
 
-    def parse(self, respond):
-        for title in respond.css('.post-header>h2'):
-            yield {'title': title.css('a ::text').get()}
+    custom_settings = {'CLOSESPIDER_ITEMCOUNT': 100}
 
-        for next_page in respond.css('a.next-post-link'):
-            yield respond.follow(next_page, self.parse)
+    start_urls = ['https://google.com/search?q=' + keywords]
+
+    def parse(self, response):
+        for link in response.css('.r a'):
+            yield {'link': 'https://google.com' + link.css('a::attr(href)').get()}
+
+        next_page = response.css('#foot td a::attr(href)').getall()
+        if next_page is not None:
+            next_page_link = 'https://google.com' + next_page[9]
+            yield scrapy.Request(url=next_page_link, callback=self.parse)

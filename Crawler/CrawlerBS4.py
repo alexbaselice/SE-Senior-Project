@@ -11,3 +11,5 @@ for i in range(linkToSave):
     with open('Links.txt', 'a+') as fo:
         fo.write('https://google.com' + linkElements[i].get('href') + '\n')
         fo.close()
+
+        next_page = response.css('#foot a').attrib['href']
